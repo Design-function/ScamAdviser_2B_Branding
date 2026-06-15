@@ -1,0 +1,4 @@
+assets/pdf-images/
+assets/page-renders/
+*.pdf
+.DS_Store
