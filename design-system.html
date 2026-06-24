@@ -108,11 +108,11 @@ body {
   font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
   background: var(--sa-red); color: white; padding: 2px 6px; border-radius: var(--radius-xs);
 }
-.sidebar-nav { flex: 1; padding: 8px 0; list-style: none; }
+.sidebar-nav { flex: 1; padding: 8px 0; list-style: none; overflow-y: auto; }
 .sidebar-nav li { margin: 0; }
 .sidebar-nav a {
-  display: flex; align-items: center; gap: 10px;
-  padding: 9px 20px; color: var(--sa-medium-grey); text-decoration: none;
+  display: flex; align-items: center;
+  padding: 7px 20px; color: var(--sa-medium-grey); text-decoration: none;
   font-size: 13px; font-weight: 500; transition: all var(--transition);
   border-left: 3px solid transparent;
 }
@@ -121,9 +121,20 @@ body {
   color: var(--sa-dark); font-weight: 600;
   border-left-color: var(--sa-red); background: rgba(204,20,23,0.04);
 }
-.sidebar-nav .nav-number {
-  font-size: 10px; font-weight: 600; opacity: 0.4; min-width: 20px;
-  font-variant-numeric: tabular-nums;
+.nav-title {
+  padding: 16px 20px 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--sa-dark);
+  letter-spacing: -0.3px;
+}
+.nav-category {
+  padding: 20px 20px 6px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--sa-medium-grey);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
 }
 .sidebar-footer {
   padding: 12px 20px; font-size: 10px; font-weight: 500;
@@ -1197,16 +1208,57 @@ body {
     </a>
   </div>
   <ul class="sidebar-nav" id="sidebar-nav">
-    <li><a href="#introduction"><span class="nav-number">00</span>Introduction</a></li>
-    <li><a href="#actions"><span class="nav-number">01</span>Actions</a></li>
-    <li><a href="#communication"><span class="nav-number">02</span>Communication</a></li>
-    <li><a href="#containment"><span class="nav-number">03</span>Containment</a></li>
-    <li><a href="#navigation"><span class="nav-number">04</span>Navigation</a></li>
-    <li><a href="#selection"><span class="nav-number">05</span>Selection</a></li>
-    <li><a href="#text-inputs"><span class="nav-number">06</span>Text Inputs</a></li>
-    <li><a href="#data-display"><span class="nav-number">07</span>Data Display</a></li>
-    <li><a href="#feedback"><span class="nav-number">08</span>Feedback</a></li>
-    <li><a href="#tokens"><span class="nav-number">09</span>Tokens Reference</a></li>
+    <li class="nav-title">Web Design System</li>
+    <li class="nav-category">Tokens</li>
+    <li><a href="#sub-color-palette">Colors</a></li>
+    <li><a href="#sub-typography-scale">Typography</a></li>
+    <li><a href="#sub-spacing-scale">Spacing</a></li>
+    <li><a href="#sub-border-radius">Border Radius</a></li>
+    <li><a href="#sub-shadow-elevation">Shadows</a></li>
+    <li class="nav-category">Components</li>
+    <li><a href="#sub-buttons">Buttons</a></li>
+    <li><a href="#sub-icon-buttons">Icon Buttons</a></li>
+    <li><a href="#sub-fab">FAB</a></li>
+    <li><a href="#sub-segmented-buttons">Segmented Buttons</a></li>
+    <li><a href="#sub-badges">Badges</a></li>
+    <li><a href="#sub-progress-indicators">Progress</a></li>
+    <li><a href="#sub-snackbar">Snackbar</a></li>
+    <li><a href="#sub-tooltips">Tooltips</a></li>
+    <li><a href="#sub-cards">Cards</a></li>
+    <li><a href="#sub-dialogs">Dialogs</a></li>
+    <li><a href="#sub-dividers">Dividers</a></li>
+    <li><a href="#sub-lists">Lists</a></li>
+    <li><a href="#sub-bottom-sheets">Bottom Sheets</a></li>
+    <li><a href="#sub-carousel">Carousel</a></li>
+    <li><a href="#sub-side-sheets">Side Sheets</a></li>
+    <li><a href="#sub-top-app-bar">Top App Bar</a></li>
+    <li><a href="#sub-tabs">Tabs</a></li>
+    <li><a href="#sub-breadcrumbs">Breadcrumbs</a></li>
+    <li><a href="#sub-pagination">Pagination</a></li>
+    <li><a href="#sub-bottom-app-bar">Bottom App Bar</a></li>
+    <li><a href="#sub-navigation-bar">Navigation Bar</a></li>
+    <li><a href="#sub-navigation-drawer">Navigation Drawer</a></li>
+    <li><a href="#sub-navigation-rail">Navigation Rail</a></li>
+    <li><a href="#sub-search">Search</a></li>
+    <li><a href="#sub-checkbox">Checkbox</a></li>
+    <li><a href="#sub-radio">Radio</a></li>
+    <li><a href="#sub-switch">Switch</a></li>
+    <li><a href="#sub-chips">Chips</a></li>
+    <li><a href="#sub-date-pickers">Date Pickers</a></li>
+    <li><a href="#sub-menus">Menus</a></li>
+    <li><a href="#sub-sliders">Sliders</a></li>
+    <li><a href="#sub-time-pickers">Time Pickers</a></li>
+    <li><a href="#sub-text-fields">Text Fields</a></li>
+    <li><a href="#sub-text-area">Text Area</a></li>
+    <li><a href="#sub-select">Select</a></li>
+    <li><a href="#sub-tables">Tables</a></li>
+    <li><a href="#sub-status-badges">Status Badges</a></li>
+    <li><a href="#sub-avatars">Avatars</a></li>
+    <li><a href="#sub-alerts">Alerts</a></li>
+    <li><a href="#sub-empty-state">Empty State</a></li>
+    <li class="nav-category">Guidelines</li>
+    <li><a href="#sub-design-principles">Design Principles</a></li>
+    <li><a href="#sub-color-ratio">Color Ratio</a></li>
   </ul>
   <div class="sidebar-footer" id="sidebar-footer"></div>
 </nav>
@@ -1223,13 +1275,12 @@ body {
   </div>
 </section>
 
-<!-- 00 — INTRODUCTION -->
+<!-- INTRODUCTION -->
 <section class="ds-section" id="introduction">
-  <div class="ds-section-number">Chapter 00</div>
   <h2 class="ds-section-title">Introduction</h2>
   <p class="ds-section-desc">A living reference of reusable UI components for ScamAdviser B2B products. This system ensures visual consistency, accelerates development, and maintains brand integrity across every touchpoint.</p>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-design-principles">
     <div class="ds-subsection-title">Design Principles</div>
     <div class="ds-principles">
       <div class="ds-principle-card">
@@ -1255,7 +1306,7 @@ body {
     </div>
   </div>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-color-ratio">
     <div class="ds-subsection-title">Color Ratio</div>
     <p class="ds-label">60% White / 30% Dark / 10% Red</p>
     <div class="ds-ratio-bar">
@@ -1266,13 +1317,12 @@ body {
   </div>
 </section>
 
-<!-- 01 — ACTIONS -->
+<!-- ACTIONS -->
 <section class="ds-section" id="actions">
-  <div class="ds-section-number">Chapter 01</div>
   <h2 class="ds-section-title">Actions</h2>
   <p class="ds-section-desc">Buttons and interactive controls that let users take action. Each variant communicates a different level of emphasis.</p>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-buttons">
     <div class="ds-subsection-title">Buttons</div>
 
     <div class="ds-label">Variants</div>
@@ -1314,7 +1364,7 @@ body {
     </div>
   </div>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-icon-buttons">
     <div class="ds-subsection-title">Icon Buttons</div>
 
     <div class="ds-label">Filled</div>
@@ -1345,7 +1395,7 @@ body {
     </div>
   </div>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-fab">
     <div class="ds-subsection-title">Floating Action Button (FAB)</div>
     <div class="ds-demo">
       <div class="ds-demo-row" style="align-items:center;">
@@ -1356,7 +1406,7 @@ body {
     </div>
   </div>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-segmented-buttons">
     <div class="ds-subsection-title">Segmented Buttons</div>
     <div class="ds-label">Two Segments</div>
     <div class="ds-demo">
@@ -1384,13 +1434,12 @@ body {
   </div>
 </section>
 
-<!-- 02 — COMMUNICATION -->
+<!-- COMMUNICATION -->
 <section class="ds-section" id="communication">
-  <div class="ds-section-number">Chapter 02</div>
   <h2 class="ds-section-title">Communication</h2>
   <p class="ds-section-desc">Components that convey status, progress, and contextual information to users without requiring direct interaction.</p>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-badges">
     <div class="ds-subsection-title">Badges</div>
     <div class="ds-demo">
       <div class="ds-demo-row" style="gap:32px;">
@@ -1410,7 +1459,7 @@ body {
     </div>
   </div>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-progress-indicators">
     <div class="ds-subsection-title">Progress Indicators</div>
     <div class="ds-label">Linear  --  Determinate</div>
     <div class="ds-demo">
@@ -1426,12 +1475,12 @@ body {
     </div>
   </div>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-snackbar">
     <div class="ds-subsection-title">Snackbar / Toast</div>
     <div class="ds-demo"><button class="ds-btn ds-btn-primary ds-btn-md" onclick="showToast()">Show Toast</button></div>
   </div>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-tooltips">
     <div class="ds-subsection-title">Tooltips</div>
     <div class="ds-demo">
       <div class="ds-demo-row" style="gap:32px">
@@ -1448,13 +1497,12 @@ body {
   </div>
 </section>
 
-<!-- 03 — CONTAINMENT -->
+<!-- CONTAINMENT -->
 <section class="ds-section" id="containment">
-  <div class="ds-section-number">Chapter 03</div>
   <h2 class="ds-section-title">Containment</h2>
   <p class="ds-section-desc">Containers group related content and actions together, creating visual hierarchy and clear boundaries within the interface.</p>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-cards">
     <div class="ds-subsection-title">Cards</div>
     <div class="ds-demo">
       <div class="ds-demo-grid">
@@ -1477,12 +1525,12 @@ body {
     </div>
   </div>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-dialogs">
     <div class="ds-subsection-title">Dialogs / Modals</div>
     <div class="ds-demo"><button class="ds-btn ds-btn-primary ds-btn-md" onclick="openModal()">Open Dialog</button></div>
   </div>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-dividers">
     <div class="ds-subsection-title">Dividers</div>
     <div class="ds-demo">
       <p style="font-size:14px;color:var(--sa-medium-grey);margin-bottom:4px">Content above divider</p>
@@ -1494,7 +1542,7 @@ body {
     </div>
   </div>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-lists">
     <div class="ds-subsection-title">Lists</div>
     <div class="ds-label">Simple List</div>
     <div class="ds-demo">
@@ -1522,7 +1570,7 @@ body {
     </div>
   </div>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-bottom-sheets">
     <div class="ds-subsection-title">Bottom Sheets</div>
     <div class="ds-demo">
       <div class="ds-bottom-sheet-mock">
@@ -1538,7 +1586,7 @@ body {
     </div>
   </div>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-carousel">
     <div class="ds-subsection-title">Carousel</div>
     <div class="ds-demo">
       <div class="ds-carousel-wrap" id="demo-carousel">
@@ -1566,7 +1614,7 @@ body {
     </div>
   </div>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-side-sheets">
     <div class="ds-subsection-title">Side Sheets</div>
     <div class="ds-demo">
       <div class="ds-side-sheet-mock">
@@ -1592,13 +1640,12 @@ body {
   </div>
 </section>
 
-<!-- 04 — NAVIGATION -->
+<!-- NAVIGATION -->
 <section class="ds-section" id="navigation">
-  <div class="ds-section-number">Chapter 04</div>
   <h2 class="ds-section-title">Navigation</h2>
   <p class="ds-section-desc">Components that help users move through the application, understand their location, and access different sections.</p>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-top-app-bar">
     <div class="ds-subsection-title">Top App Bar</div>
     <div class="ds-label">Standard</div>
     <div class="ds-demo">
@@ -1624,7 +1671,7 @@ body {
     </div>
   </div>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-tabs">
     <div class="ds-subsection-title">Tabs</div>
     <div class="ds-demo">
       <div class="ds-tabs" id="demo-tabs">
@@ -1640,7 +1687,7 @@ body {
     </div>
   </div>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-breadcrumbs">
     <div class="ds-subsection-title">Breadcrumbs</div>
     <div class="ds-demo">
       <nav class="ds-breadcrumbs">
@@ -1655,7 +1702,7 @@ body {
     </div>
   </div>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-pagination">
     <div class="ds-subsection-title">Pagination</div>
     <div class="ds-demo">
       <div class="ds-pagination" id="demo-pagination">
@@ -1670,7 +1717,7 @@ body {
     </div>
   </div>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-bottom-app-bar">
     <div class="ds-subsection-title">Bottom App Bar</div>
     <div class="ds-demo">
       <div class="ds-bottom-appbar-mock" id="demo-bottom-appbar">
@@ -1683,7 +1730,7 @@ body {
     </div>
   </div>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-navigation-bar">
     <div class="ds-subsection-title">Navigation Bar</div>
     <div class="ds-demo">
       <div class="ds-navbar-mock" id="demo-navbar">
@@ -1695,7 +1742,7 @@ body {
     </div>
   </div>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-navigation-drawer">
     <div class="ds-subsection-title">Navigation Drawer</div>
     <div class="ds-demo">
       <div class="ds-nav-drawer-mock" id="demo-nav-drawer">
@@ -1718,7 +1765,7 @@ body {
     </div>
   </div>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-navigation-rail">
     <div class="ds-subsection-title">Navigation Rail</div>
     <div class="ds-demo">
       <div class="ds-nav-rail-mock" id="demo-nav-rail">
@@ -1731,7 +1778,7 @@ body {
     </div>
   </div>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-search">
     <div class="ds-subsection-title">Search</div>
     <div class="ds-label">Default</div>
     <div class="ds-demo">
@@ -1752,13 +1799,12 @@ body {
   </div>
 </section>
 
-<!-- 05 — SELECTION -->
+<!-- SELECTION -->
 <section class="ds-section" id="selection">
-  <div class="ds-section-number">Chapter 05</div>
   <h2 class="ds-section-title">Selection</h2>
   <p class="ds-section-desc">Controls that allow users to make choices, toggle options, and filter content. All use ScamAdviser red for the active state.</p>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-checkbox">
     <div class="ds-subsection-title">Checkbox</div>
     <div class="ds-demo">
       <div class="ds-demo-col">
@@ -1770,7 +1816,7 @@ body {
     </div>
   </div>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-radio">
     <div class="ds-subsection-title">Radio Button</div>
     <div class="ds-demo">
       <div class="ds-demo-col">
@@ -1781,7 +1827,7 @@ body {
     </div>
   </div>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-switch">
     <div class="ds-subsection-title">Switch / Toggle</div>
     <div class="ds-demo">
       <div class="ds-demo-col">
@@ -1792,7 +1838,7 @@ body {
     </div>
   </div>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-chips">
     <div class="ds-subsection-title">Chips</div>
     <div class="ds-label">Filter Chips (Toggleable)</div>
     <div class="ds-demo">
@@ -1812,7 +1858,7 @@ body {
     </div>
   </div>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-date-pickers">
     <div class="ds-subsection-title">Date Pickers</div>
     <div class="ds-demo">
       <div class="ds-datepicker-mock">
@@ -1841,7 +1887,7 @@ body {
     </div>
   </div>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-menus">
     <div class="ds-subsection-title">Menus</div>
     <div class="ds-demo">
       <div class="ds-demo-row" style="gap:32px">
@@ -1859,7 +1905,7 @@ body {
     </div>
   </div>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-sliders">
     <div class="ds-subsection-title">Sliders</div>
     <div class="ds-label">Continuous Slider</div>
     <div class="ds-demo">
@@ -1887,7 +1933,7 @@ body {
     </div>
   </div>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-time-pickers">
     <div class="ds-subsection-title">Time Pickers</div>
     <div class="ds-demo">
       <div class="ds-timepicker-mock">
@@ -1922,13 +1968,12 @@ body {
   </div>
 </section>
 
-<!-- 06 — TEXT INPUTS -->
+<!-- TEXT INPUTS -->
 <section class="ds-section" id="text-inputs">
-  <div class="ds-section-number">Chapter 06</div>
   <h2 class="ds-section-title">Text Inputs</h2>
   <p class="ds-section-desc">Form controls for capturing text input. Outlined fields are the primary style; filled fields provide an alternative for dense layouts.</p>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-text-fields">
     <div class="ds-subsection-title">Text Fields</div>
     <div class="ds-label">Outlined Text Field (Primary)</div>
     <div class="ds-demo">
@@ -1956,14 +2001,14 @@ body {
     </div>
   </div>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-text-area">
     <div class="ds-subsection-title">Text Area</div>
     <div class="ds-demo">
       <div class="ds-field"><label class="ds-field-label">Description</label><textarea class="ds-textarea" placeholder="Enter a description of the issue..." rows="4"></textarea><div class="ds-field-helper">Maximum 500 characters.</div></div>
     </div>
   </div>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-select">
     <div class="ds-subsection-title">Select / Dropdown</div>
     <div class="ds-demo">
       <div class="ds-field"><label class="ds-field-label">Report Type</label><select class="ds-select"><option value="" disabled selected>Choose a report type</option><option>Domain Analysis</option><option>Trust Score Report</option><option>Threat Assessment</option><option>Compliance Audit</option></select></div>
@@ -1971,13 +2016,12 @@ body {
   </div>
 </section>
 
-<!-- 07 — DATA DISPLAY -->
+<!-- DATA DISPLAY -->
 <section class="ds-section" id="data-display">
-  <div class="ds-section-number">Chapter 07</div>
   <h2 class="ds-section-title">Data Display</h2>
   <p class="ds-section-desc">Components for presenting structured data, status indicators, and user identifiers in clear, scannable formats.</p>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-tables">
     <div class="ds-subsection-title">Tables</div>
     <div class="ds-label">Standard Table</div>
     <div class="ds-demo" style="overflow-x:auto">
@@ -1999,7 +2043,7 @@ body {
     </div>
   </div>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-status-badges">
     <div class="ds-subsection-title">Status Badges</div>
     <div class="ds-demo">
       <div class="ds-demo-row">
@@ -2012,7 +2056,7 @@ body {
     </div>
   </div>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-avatars">
     <div class="ds-subsection-title">Avatars</div>
     <div class="ds-label">With Initials</div>
     <div class="ds-demo">
@@ -2033,13 +2077,12 @@ body {
   </div>
 </section>
 
-<!-- 08 — FEEDBACK -->
+<!-- FEEDBACK -->
 <section class="ds-section" id="feedback">
-  <div class="ds-section-number">Chapter 08</div>
   <h2 class="ds-section-title">Feedback</h2>
   <p class="ds-section-desc">Components that communicate system status, validation results, and contextual guidance to keep users informed.</p>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-alerts">
     <div class="ds-subsection-title">Alerts / Banners</div>
     <div class="ds-demo">
       <div style="display:flex;flex-direction:column;gap:16px">
@@ -2067,7 +2110,7 @@ body {
     </div>
   </div>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-empty-state">
     <div class="ds-subsection-title">Empty State</div>
     <div class="ds-demo">
       <div class="ds-empty-state">
@@ -2080,13 +2123,12 @@ body {
   </div>
 </section>
 
-<!-- 09 — TOKENS REFERENCE -->
+<!-- TOKENS REFERENCE -->
 <section class="ds-section" id="tokens">
-  <div class="ds-section-number">Chapter 09</div>
   <h2 class="ds-section-title">Tokens Reference</h2>
   <p class="ds-section-desc">The foundational design tokens that power every component. Colors, typography, spacing, radii, and elevation scales.</p>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-color-palette">
     <div class="ds-subsection-title">Color Palette</div>
     <p style="font-size:13px;color:var(--sa-medium-grey);margin-bottom:16px">Click any swatch to copy its hex value.</p>
     <div class="ds-label">Brand Colors</div>
@@ -2095,7 +2137,7 @@ body {
     <div class="ds-demo"><div class="ds-swatch-grid" id="extended-swatches"></div></div>
   </div>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-typography-scale">
     <div class="ds-subsection-title">Typography Scale</div>
     <div class="ds-demo">
       <div class="ds-type-row"><div class="ds-type-meta"><div class="ds-type-name">Display</div><div class="ds-type-spec">48px / 800 / -1.5px</div></div><div style="font-size:48px;font-weight:800;letter-spacing:-1.5px;line-height:1.1;color:var(--sa-dark)">Display</div></div>
@@ -2110,7 +2152,7 @@ body {
     </div>
   </div>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-spacing-scale">
     <div class="ds-subsection-title">Spacing Scale</div>
     <p style="font-size:13px;color:var(--sa-medium-grey);margin-bottom:16px">Based on a 4px grid.</p>
     <div class="ds-demo">
@@ -2127,7 +2169,7 @@ body {
     </div>
   </div>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-border-radius">
     <div class="ds-subsection-title">Border Radius</div>
     <div class="ds-demo">
       <div class="ds-radius-demo">
@@ -2140,7 +2182,7 @@ body {
     </div>
   </div>
 
-  <div class="ds-subsection">
+  <div class="ds-subsection" id="sub-shadow-elevation">
     <div class="ds-subsection-title">Shadow Elevation</div>
     <div class="ds-demo">
       <div class="ds-shadow-demo">
@@ -2206,7 +2248,7 @@ body {
 
   // ---- Sidebar scroll tracking ----
   var navLinks = document.querySelectorAll('#sidebar-nav a');
-  var sections = document.querySelectorAll('.ds-section, .ds-hero');
+  var sections = document.querySelectorAll('[id^="sub-"]');
   function updateNav() {
     var cur = '';
     sections.forEach(function(s) {
