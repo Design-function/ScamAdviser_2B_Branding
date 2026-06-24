@@ -102,7 +102,7 @@ body {
   overflow-y: auto;
 }
 .sidebar-header { padding: 24px 20px 16px; border-bottom: 1px solid var(--sa-grey); }
-.sidebar-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.sidebar-logo { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; text-decoration: none; }
 .sidebar-logo-img { height: 20px; width: auto; }
 .sidebar-badge {
   font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
@@ -153,19 +153,12 @@ body {
    HERO
    ============================================ */
 .ds-hero {
-  min-height: 60vh; background: var(--sa-black); display: flex;
+  min-height: 36vh; background: var(--sa-black); display: flex;
   align-items: center; justify-content: center; position: relative; overflow: hidden;
-  padding: 80px 40px;
+  padding: 56px 40px;
 }
-.ds-hero::before {
-  content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 20% 50%, rgba(204,20,23,0.15) 0%, transparent 60%),
-              radial-gradient(ellipse at 80% 50%, rgba(204,20,23,0.08) 0%, transparent 50%);
-  animation: heroShift 12s ease-in-out infinite alternate;
-}
-@keyframes heroShift {
-  0% { opacity: 0.6; transform: scale(1); }
-  100% { opacity: 1; transform: scale(1.1); }
+#ds-aurora-canvas {
+  position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0;
 }
 .ds-hero-content { text-align: center; z-index: 2; position: relative; }
 .ds-hero-title {
@@ -772,7 +765,7 @@ body {
   #mobile-toggle { display: flex; }
   .sidebar-overlay.active { display: block; }
   .ds-section { padding: 48px 20px; }
-  .ds-hero { padding: 60px 20px; min-height: 40vh; }
+  .ds-hero { padding: 48px 20px; min-height: 28vh; }
   .ds-hero-title { font-size: 32px; }
   .ds-demo-row { flex-direction: column; align-items: flex-start; }
   .ds-type-row { flex-direction: column; gap: 8px; }
@@ -827,6 +820,7 @@ body {
 
 <!-- HERO -->
 <section class="ds-hero" id="hero">
+  <canvas id="ds-aurora-canvas"></canvas>
   <div class="ds-hero-content">
     <h1 class="ds-hero-title">Web Design System</h1>
     <p class="ds-hero-subtitle">A comprehensive component library for ScamAdviser B2B products. Every element below is a live, interactive demo.</p>
@@ -1667,6 +1661,126 @@ function togglePw() {
     i.innerHTML = '<path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>';
   }
 }
+
+// ---- WebGL Aurora Background ----
+(function(){
+  var canvas = document.getElementById('ds-aurora-canvas');
+  if (!canvas) return;
+  var gl = canvas.getContext('webgl');
+  if (!gl) return;
+
+  var vsSource = 'attribute vec2 aPosition; void main() { gl_Position = vec4(aPosition, 0.0, 1.0); }';
+  var fsSource = [
+    'precision highp float;',
+    'uniform vec2 iResolution;',
+    'uniform float iTime;',
+    'uniform vec2 iMouse;',
+    '#define STEPS 32',
+    'mat2 rot(float a){ float s=sin(a),c=cos(a); return mat2(c,-s,s,c); }',
+    'float hash(vec2 p){',
+    '  p=fract(p*vec2(123.34,456.21));',
+    '  p+=dot(p,p+45.32);',
+    '  return fract(p.x*p.y);',
+    '}',
+    'float fbm(vec3 p){',
+    '  float f=0.0, amp=0.5;',
+    '  for(int i=0;i<4;i++){',
+    '    f+=amp*hash(p.xy);',
+    '    p*=2.0; amp*=0.5;',
+    '  }',
+    '  return f;',
+    '}',
+    'float map(vec3 p){',
+    '  vec3 q=p;',
+    '  q.z+=iTime*0.15;',
+    '  vec2 mouse=(iMouse.xy/iResolution.xy-0.5)*2.0;',
+    '  q.xy+=mouse*0.2;',
+    '  float f=fbm(q*2.0);',
+    '  f*=sin(p.y*2.0+iTime*0.4)*0.5+0.5;',
+    '  return clamp(f,0.0,1.0);',
+    '}',
+    'void main(){',
+    '  vec2 uv=(gl_FragCoord.xy-0.5*iResolution.xy)/iResolution.y;',
+    '  vec3 ro=vec3(0,-1,0);',
+    '  vec3 rd=normalize(vec3(uv,1.0));',
+    '  vec3 col=vec3(0);',
+    '  float t=0.0;',
+    '  for(int i=0;i<STEPS;i++){',
+    '    vec3 p=ro+rd*t;',
+    '    float d=map(p);',
+    '    if(d>0.0){',
+    '      vec3 saColor = vec3(0.8,0.08,0.09)*0.7 + 0.3*cos(iTime*0.2+p.y*1.5+vec3(0.0,0.8,1.2));',
+    '      saColor = mix(saColor, vec3(0.5,0.03,0.05), smoothstep(0.0,1.0,p.y*0.5+0.5));',
+    '      col+=saColor*d*0.08*1.2;',
+    '    }',
+    '    t+=0.1;',
+    '  }',
+    '  col=pow(col,vec3(0.9));',
+    '  gl_FragColor=vec4(col,1.0);',
+    '}'
+  ].join('\n');
+
+  function compileShader(src, type){
+    var s=gl.createShader(type);
+    gl.shaderSource(s,src);
+    gl.compileShader(s);
+    if(!gl.getShaderParameter(s,gl.COMPILE_STATUS)){
+      gl.deleteShader(s);
+      return null;
+    }
+    return s;
+  }
+
+  var vs=compileShader(vsSource,gl.VERTEX_SHADER);
+  var fs=compileShader(fsSource,gl.FRAGMENT_SHADER);
+  if(!vs||!fs) return;
+
+  var prog=gl.createProgram();
+  gl.attachShader(prog,vs);
+  gl.attachShader(prog,fs);
+  gl.linkProgram(prog);
+  if(!gl.getProgramParameter(prog,gl.LINK_STATUS)) return;
+  gl.useProgram(prog);
+
+  var verts=new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]);
+  var buf=gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER,buf);
+  gl.bufferData(gl.ARRAY_BUFFER,verts,gl.STATIC_DRAW);
+  var aPos=gl.getAttribLocation(prog,'aPosition');
+  gl.enableVertexAttribArray(aPos);
+  gl.vertexAttribPointer(aPos,2,gl.FLOAT,false,0,0);
+
+  var uRes=gl.getUniformLocation(prog,'iResolution');
+  var uTime=gl.getUniformLocation(prog,'iTime');
+  var uMouse=gl.getUniformLocation(prog,'iMouse');
+
+  var mousePos={x:0.5,y:0.5};
+  window.addEventListener('mousemove',function(e){
+    var r=canvas.getBoundingClientRect();
+    mousePos.x=(e.clientX-r.left)/r.width;
+    mousePos.y=(e.clientY-r.top)/r.height;
+  });
+
+  function resize(){
+    canvas.width=canvas.clientWidth;
+    canvas.height=canvas.clientHeight;
+    gl.viewport(0,0,canvas.width,canvas.height);
+    gl.uniform2f(uRes,canvas.width,canvas.height);
+  }
+  window.addEventListener('resize',resize);
+  resize();
+
+  var t0=performance.now();
+  function render(){
+    if(!gl||gl.isContextLost()) return;
+    var t=(performance.now()-t0)/1000;
+    gl.uniform1f(uTime,t);
+    gl.uniform2f(uMouse,mousePos.x*canvas.width,(1-mousePos.y)*canvas.height);
+    gl.drawArrays(gl.TRIANGLES,0,6);
+    requestAnimationFrame(render);
+  }
+  render();
+})();
 </script>
 </body>
 </html>
