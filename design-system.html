@@ -753,6 +753,402 @@ body {
 .ds-ratio-bar { display: flex; height: 12px; border-radius: 6px; overflow: hidden; max-width: 400px; margin-top: 12px; }
 
 /* ============================================
+   SEGMENTED BUTTONS
+   ============================================ */
+.ds-segmented-group {
+  display: inline-flex; border-radius: var(--radius-sm); overflow: hidden;
+  border: 1.5px solid var(--sa-grey);
+}
+.ds-segmented-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 10px 20px; font-family: var(--font-primary); font-size: 14px;
+  font-weight: 500; background: var(--sa-white); color: var(--sa-dark);
+  border: none; border-right: 1.5px solid var(--sa-grey); cursor: pointer;
+  transition: all var(--transition);
+}
+.ds-segmented-btn:last-child { border-right: none; }
+.ds-segmented-btn:hover { background: var(--sa-light); }
+.ds-segmented-btn.active {
+  background: var(--sa-red); color: var(--sa-white); border-right-color: var(--sa-red);
+}
+.ds-segmented-btn.active + .ds-segmented-btn { border-left-color: var(--sa-red); }
+.ds-segmented-btn svg { width: 16px; height: 16px; fill: currentColor; }
+
+/* ============================================
+   BOTTOM SHEETS
+   ============================================ */
+.ds-bottom-sheet-mock {
+  max-width: 380px; background: var(--sa-white); border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  box-shadow: var(--shadow-4); overflow: hidden;
+}
+.ds-bottom-sheet-handle {
+  display: flex; justify-content: center; padding: 12px 0 4px;
+}
+.ds-bottom-sheet-handle span {
+  width: 32px; height: 4px; border-radius: 2px; background: var(--sa-grey);
+}
+.ds-bottom-sheet-header {
+  padding: 12px 24px 8px; font-size: 16px; font-weight: 700; color: var(--sa-dark);
+}
+.ds-bottom-sheet-list { list-style: none; padding: 0 0 8px; }
+.ds-bottom-sheet-item {
+  display: flex; align-items: center; gap: 16px; padding: 12px 24px;
+  font-size: 14px; color: var(--sa-dark); cursor: pointer;
+  transition: background var(--transition);
+}
+.ds-bottom-sheet-item:hover { background: rgba(204,20,23,0.04); }
+.ds-bottom-sheet-item svg { width: 20px; height: 20px; fill: var(--sa-medium-grey); flex-shrink: 0; }
+
+/* ============================================
+   CAROUSEL
+   ============================================ */
+.ds-carousel-wrap { position: relative; max-width: 100%; }
+.ds-carousel-track {
+  display: flex; gap: 16px; overflow-x: auto; scroll-behavior: smooth;
+  scrollbar-width: none; padding: 4px 0;
+}
+.ds-carousel-track::-webkit-scrollbar { display: none; }
+.ds-carousel-card {
+  min-width: 220px; background: var(--sa-white); border-radius: var(--radius-card);
+  box-shadow: var(--shadow-2); overflow: hidden; flex-shrink: 0;
+  transition: transform var(--transition);
+}
+.ds-carousel-card:hover { transform: translateY(-2px); }
+.ds-carousel-card-img {
+  height: 120px; display: flex; align-items: center; justify-content: center;
+}
+.ds-carousel-card-img svg { width: 48px; height: 48px; fill: var(--sa-white); opacity: 0.8; }
+.ds-carousel-card-body { padding: 16px; }
+.ds-carousel-card-title { font-size: 14px; font-weight: 700; color: var(--sa-dark); margin-bottom: 4px; }
+.ds-carousel-card-desc { font-size: 12px; color: var(--sa-medium-grey); line-height: 1.5; }
+.ds-carousel-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 36px; height: 36px; border-radius: 50%; border: none;
+  background: var(--sa-white); box-shadow: var(--shadow-2); cursor: pointer;
+  display: flex; align-items: center; justify-content: center; z-index: 2;
+  transition: all var(--transition);
+}
+.ds-carousel-arrow:hover { box-shadow: var(--shadow-3); background: var(--sa-dark); }
+.ds-carousel-arrow:hover svg { fill: var(--sa-white); }
+.ds-carousel-arrow svg { width: 20px; height: 20px; fill: var(--sa-dark); }
+.ds-carousel-arrow-left { left: -12px; }
+.ds-carousel-arrow-right { right: -12px; }
+
+/* ============================================
+   SIDE SHEETS
+   ============================================ */
+.ds-side-sheet-mock {
+  display: flex; max-width: 600px; height: 320px; border-radius: var(--radius-sm);
+  overflow: hidden; box-shadow: var(--shadow-2); background: var(--sa-light);
+}
+.ds-side-sheet-content {
+  flex: 1; padding: 24px; display: flex; flex-direction: column; justify-content: center;
+  font-size: 14px; color: var(--sa-medium-grey);
+}
+.ds-side-sheet-panel {
+  width: 240px; background: var(--sa-white); border-left: 1px solid var(--sa-grey);
+  display: flex; flex-direction: column;
+}
+.ds-side-sheet-panel-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 20px; border-bottom: 1px solid var(--sa-grey);
+}
+.ds-side-sheet-panel-header h4 { font-size: 14px; font-weight: 700; color: var(--sa-dark); margin: 0; }
+.ds-side-sheet-panel-close {
+  width: 28px; height: 28px; border-radius: 50%; border: none; background: transparent;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+}
+.ds-side-sheet-panel-close:hover { background: var(--sa-light); }
+.ds-side-sheet-panel-close svg { width: 16px; height: 16px; fill: var(--sa-medium-grey); }
+.ds-side-sheet-panel-body { padding: 16px 20px; flex: 1; overflow-y: auto; }
+.ds-side-sheet-field { margin-bottom: 16px; }
+.ds-side-sheet-field label {
+  display: block; font-size: 11px; font-weight: 600; color: var(--sa-medium-grey);
+  text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;
+}
+.ds-side-sheet-field span { font-size: 13px; font-weight: 500; color: var(--sa-dark); }
+
+/* ============================================
+   BOTTOM APP BAR
+   ============================================ */
+.ds-bottom-appbar-mock {
+  max-width: 380px; background: var(--sa-white); border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  box-shadow: var(--shadow-3); padding: 12px 16px; position: relative;
+  display: flex; align-items: center; justify-content: space-around;
+}
+.ds-bottom-appbar-item {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  background: none; border: none; cursor: pointer; padding: 4px 12px;
+  transition: color var(--transition);
+}
+.ds-bottom-appbar-item svg { width: 24px; height: 24px; fill: var(--sa-medium-grey); transition: fill var(--transition); }
+.ds-bottom-appbar-item span { font-size: 10px; font-weight: 500; color: var(--sa-medium-grey); transition: color var(--transition); }
+.ds-bottom-appbar-item.active svg { fill: var(--sa-red); }
+.ds-bottom-appbar-item.active span { color: var(--sa-red); font-weight: 600; }
+.ds-bottom-appbar-fab {
+  position: absolute; top: -20px; right: 24px;
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--sa-red); border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow-3); transition: all var(--transition);
+}
+.ds-bottom-appbar-fab:hover { background: var(--sa-red-dark); transform: translateY(-2px); }
+.ds-bottom-appbar-fab svg { width: 24px; height: 24px; fill: var(--sa-white); }
+
+/* ============================================
+   NAVIGATION BAR
+   ============================================ */
+.ds-navbar-mock {
+  max-width: 480px; background: var(--sa-white); border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-2); display: flex; align-items: stretch; overflow: hidden;
+}
+.ds-navbar-item {
+  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 4px; padding: 12px 8px; background: none; border: none; cursor: pointer;
+  position: relative; transition: all var(--transition);
+}
+.ds-navbar-item svg { width: 24px; height: 24px; fill: var(--sa-medium-grey); transition: fill var(--transition); }
+.ds-navbar-item span { font-size: 11px; font-weight: 500; color: var(--sa-medium-grey); transition: color var(--transition); }
+.ds-navbar-item.active svg { fill: var(--sa-red); }
+.ds-navbar-item.active span { color: var(--sa-red); font-weight: 600; }
+.ds-navbar-item.active::after {
+  content: ''; position: absolute; top: 0; left: 25%; right: 25%;
+  height: 3px; background: var(--sa-red); border-radius: 0 0 3px 3px;
+}
+
+/* ============================================
+   NAVIGATION DRAWER
+   ============================================ */
+.ds-nav-drawer-mock {
+  max-width: 280px; background: var(--sa-white); border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-2); overflow: hidden;
+}
+.ds-nav-drawer-header {
+  padding: 20px 16px 12px; border-bottom: 1px solid var(--sa-grey);
+}
+.ds-nav-drawer-header-title { font-size: 16px; font-weight: 700; color: var(--sa-dark); }
+.ds-nav-drawer-header-sub { font-size: 12px; color: var(--sa-medium-grey); margin-top: 2px; }
+.ds-nav-drawer-section { padding: 8px 0; }
+.ds-nav-drawer-section-label {
+  font-size: 11px; font-weight: 600; color: var(--sa-medium-grey);
+  text-transform: uppercase; letter-spacing: 1px; padding: 8px 16px 4px;
+}
+.ds-nav-drawer-item {
+  display: flex; align-items: center; gap: 12px; padding: 10px 16px;
+  font-size: 14px; font-weight: 500; color: var(--sa-dark); cursor: pointer;
+  transition: all var(--transition); border-radius: 0 var(--radius-pill) var(--radius-pill) 0;
+  margin-right: 12px;
+}
+.ds-nav-drawer-item:hover { background: rgba(204,20,23,0.04); }
+.ds-nav-drawer-item.active { background: rgba(204,20,23,0.08); color: var(--sa-red); }
+.ds-nav-drawer-item svg { width: 20px; height: 20px; fill: var(--sa-medium-grey); flex-shrink: 0; }
+.ds-nav-drawer-item.active svg { fill: var(--sa-red); }
+
+/* ============================================
+   NAVIGATION RAIL
+   ============================================ */
+.ds-nav-rail-mock {
+  width: 72px; background: var(--sa-white); border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-2); display: flex; flex-direction: column;
+  align-items: center; padding: 12px 0; gap: 4px;
+}
+.ds-nav-rail-fab {
+  width: 48px; height: 48px; border-radius: var(--radius-card);
+  background: var(--sa-red); border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow-2); margin-bottom: 16px; transition: all var(--transition);
+}
+.ds-nav-rail-fab:hover { background: var(--sa-red-dark); }
+.ds-nav-rail-fab svg { width: 24px; height: 24px; fill: var(--sa-white); }
+.ds-nav-rail-item {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  padding: 8px 4px; width: 56px; border-radius: var(--radius-sm);
+  background: none; border: none; cursor: pointer;
+  transition: all var(--transition);
+}
+.ds-nav-rail-item:hover { background: var(--sa-light); }
+.ds-nav-rail-item svg { width: 24px; height: 24px; fill: var(--sa-medium-grey); transition: fill var(--transition); }
+.ds-nav-rail-item span { font-size: 10px; font-weight: 500; color: var(--sa-medium-grey); transition: color var(--transition); }
+.ds-nav-rail-item.active { background: rgba(204,20,23,0.06); }
+.ds-nav-rail-item.active svg { fill: var(--sa-red); }
+.ds-nav-rail-item.active span { color: var(--sa-red); font-weight: 600; }
+
+/* ============================================
+   SEARCH BAR
+   ============================================ */
+.ds-searchbar {
+  display: flex; align-items: center; gap: 8px; max-width: 480px;
+  background: var(--sa-light); border-radius: var(--radius-pill);
+  padding: 10px 16px; transition: all var(--transition);
+  border: 1.5px solid transparent;
+}
+.ds-searchbar:focus-within { background: var(--sa-white); border-color: var(--sa-red); box-shadow: 0 0 0 3px rgba(204,20,23,0.08); }
+.ds-searchbar svg { width: 20px; height: 20px; fill: var(--sa-medium-grey); flex-shrink: 0; }
+.ds-searchbar input {
+  flex: 1; border: none; background: transparent; font-family: var(--font-primary);
+  font-size: 14px; color: var(--sa-dark); outline: none;
+}
+.ds-searchbar input::placeholder { color: var(--sa-text-secondary); }
+.ds-searchbar-clear {
+  width: 24px; height: 24px; border-radius: 50%; border: none;
+  background: transparent; cursor: pointer; display: none;
+  align-items: center; justify-content: center; transition: background var(--transition);
+}
+.ds-searchbar-clear:hover { background: rgba(0,0,0,0.06); }
+.ds-searchbar-clear svg { width: 16px; height: 16px; fill: var(--sa-medium-grey); }
+.ds-searchbar.has-value .ds-searchbar-clear { display: flex; }
+
+/* ============================================
+   DATE PICKER
+   ============================================ */
+.ds-datepicker-mock {
+  max-width: 320px; background: var(--sa-white); border-radius: var(--radius-card);
+  box-shadow: var(--shadow-3); overflow: hidden;
+}
+.ds-datepicker-header {
+  padding: 16px 20px; background: var(--sa-red); color: var(--sa-white);
+}
+.ds-datepicker-year { font-size: 12px; opacity: 0.8; }
+.ds-datepicker-date { font-size: 24px; font-weight: 700; margin-top: 4px; }
+.ds-datepicker-nav {
+  display: flex; align-items: center; justify-content: space-between; padding: 12px 12px 4px;
+}
+.ds-datepicker-month { font-size: 14px; font-weight: 600; color: var(--sa-dark); }
+.ds-datepicker-nav-btn {
+  width: 32px; height: 32px; border-radius: 50%; border: none;
+  background: transparent; cursor: pointer; display: flex;
+  align-items: center; justify-content: center; transition: background var(--transition);
+}
+.ds-datepicker-nav-btn:hover { background: var(--sa-light); }
+.ds-datepicker-nav-btn svg { width: 18px; height: 18px; fill: var(--sa-dark); }
+.ds-datepicker-grid {
+  display: grid; grid-template-columns: repeat(7, 1fr); text-align: center;
+  padding: 4px 12px 12px; gap: 2px;
+}
+.ds-datepicker-day-label { font-size: 11px; font-weight: 600; color: var(--sa-medium-grey); padding: 8px 0; }
+.ds-datepicker-day {
+  width: 36px; height: 36px; border-radius: 50%; border: none;
+  background: transparent; font-family: var(--font-primary); font-size: 13px;
+  color: var(--sa-dark); cursor: pointer; display: flex;
+  align-items: center; justify-content: center; transition: all var(--transition);
+  margin: 0 auto;
+}
+.ds-datepicker-day:hover { background: rgba(204,20,23,0.06); }
+.ds-datepicker-day.today { border: 1.5px solid var(--sa-red); color: var(--sa-red); font-weight: 600; }
+.ds-datepicker-day.selected { background: var(--sa-red); color: var(--sa-white); font-weight: 600; }
+.ds-datepicker-day.other-month { color: var(--sa-grey); }
+.ds-datepicker-actions {
+  display: flex; justify-content: flex-end; gap: 8px; padding: 8px 12px 12px;
+  border-top: 1px solid var(--sa-grey);
+}
+
+/* ============================================
+   MENUS
+   ============================================ */
+.ds-menu-wrap { position: relative; display: inline-block; }
+.ds-menu {
+  position: absolute; top: calc(100% + 4px); left: 0; min-width: 200px;
+  background: var(--sa-white); border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-3); z-index: 100; padding: 4px 0;
+  opacity: 0; visibility: hidden; transform: translateY(-4px);
+  transition: all 0.15s ease;
+}
+.ds-menu.open { opacity: 1; visibility: visible; transform: translateY(0); }
+.ds-menu-item {
+  display: flex; align-items: center; gap: 12px; padding: 10px 16px;
+  font-size: 14px; color: var(--sa-dark); cursor: pointer;
+  transition: background var(--transition); border: none; background: none;
+  width: 100%; text-align: left; font-family: var(--font-primary);
+}
+.ds-menu-item:hover { background: rgba(204,20,23,0.04); }
+.ds-menu-item svg { width: 18px; height: 18px; fill: var(--sa-medium-grey); flex-shrink: 0; }
+.ds-menu-divider { height: 1px; background: var(--sa-grey); margin: 4px 0; }
+.ds-menu-item.destructive { color: var(--sa-red); }
+.ds-menu-item.destructive svg { fill: var(--sa-red); }
+
+/* ============================================
+   SLIDERS
+   ============================================ */
+.ds-slider-wrap { max-width: 400px; }
+.ds-slider-label {
+  display: flex; justify-content: space-between; margin-bottom: 8px;
+  font-size: 13px; font-weight: 500; color: var(--sa-dark);
+}
+.ds-slider-value { font-weight: 600; color: var(--sa-red); }
+.ds-slider {
+  -webkit-appearance: none; appearance: none; width: 100%; height: 4px;
+  background: var(--sa-grey); border-radius: 2px; outline: none;
+  transition: background var(--transition);
+}
+.ds-slider::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none; width: 20px; height: 20px;
+  border-radius: 50%; background: var(--sa-red); cursor: pointer;
+  box-shadow: var(--shadow-2); transition: all var(--transition);
+}
+.ds-slider::-webkit-slider-thumb:hover { transform: scale(1.15); box-shadow: var(--shadow-3); }
+.ds-slider::-moz-range-thumb {
+  width: 20px; height: 20px; border-radius: 50%; background: var(--sa-red);
+  cursor: pointer; border: none; box-shadow: var(--shadow-2);
+}
+.ds-slider-discrete-marks {
+  display: flex; justify-content: space-between; padding: 4px 0; max-width: 400px;
+}
+.ds-slider-discrete-marks span { font-size: 10px; color: var(--sa-medium-grey); }
+
+/* ============================================
+   TIME PICKER
+   ============================================ */
+.ds-timepicker-mock {
+  max-width: 300px; background: var(--sa-white); border-radius: var(--radius-card);
+  box-shadow: var(--shadow-3); overflow: hidden; padding: 24px;
+}
+.ds-timepicker-title { font-size: 12px; font-weight: 600; color: var(--sa-medium-grey); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+.ds-timepicker-display { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 24px; }
+.ds-timepicker-num {
+  width: 72px; height: 64px; border-radius: var(--radius-sm);
+  background: var(--sa-light); display: flex; align-items: center; justify-content: center;
+  font-size: 32px; font-weight: 700; color: var(--sa-dark); cursor: pointer;
+  transition: all var(--transition);
+}
+.ds-timepicker-num.active { background: rgba(204,20,23,0.08); color: var(--sa-red); }
+.ds-timepicker-sep { font-size: 32px; font-weight: 700; color: var(--sa-medium-grey); }
+.ds-timepicker-period { display: flex; flex-direction: column; gap: 4px; margin-left: 8px; }
+.ds-timepicker-period-btn {
+  padding: 4px 12px; font-family: var(--font-primary); font-size: 12px;
+  font-weight: 600; border: 1.5px solid var(--sa-grey); background: var(--sa-white);
+  color: var(--sa-medium-grey); cursor: pointer; transition: all var(--transition);
+}
+.ds-timepicker-period-btn:first-child { border-radius: var(--radius-xs) var(--radius-xs) 0 0; }
+.ds-timepicker-period-btn:last-child { border-radius: 0 0 var(--radius-xs) var(--radius-xs); border-top: none; }
+.ds-timepicker-period-btn.active { background: var(--sa-red); color: var(--sa-white); border-color: var(--sa-red); }
+.ds-timepicker-clock {
+  width: 200px; height: 200px; border-radius: 50%; background: var(--sa-light);
+  position: relative; margin: 0 auto 20px;
+}
+.ds-timepicker-clock-center {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  width: 8px; height: 8px; border-radius: 50%; background: var(--sa-red);
+}
+.ds-timepicker-clock-hand {
+  position: absolute; bottom: 50%; left: 50%; width: 2px; height: 70px;
+  background: var(--sa-red); transform-origin: bottom center; transform: rotate(0deg);
+  border-radius: 1px;
+}
+.ds-timepicker-clock-hand::after {
+  content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 28px; height: 28px; border-radius: 50%; background: var(--sa-red);
+}
+.ds-timepicker-clock-num {
+  position: absolute; width: 28px; height: 28px; display: flex;
+  align-items: center; justify-content: center; font-size: 12px;
+  font-weight: 500; color: var(--sa-dark);
+}
+.ds-timepicker-clock-num.active { color: var(--sa-white); font-weight: 700; }
+.ds-timepicker-actions {
+  display: flex; justify-content: flex-end; gap: 8px;
+}
+
+/* ============================================
    RESPONSIVE
    ============================================ */
 @media (max-width: 1024px) {
@@ -959,6 +1355,33 @@ body {
       </div>
     </div>
   </div>
+
+  <div class="ds-subsection">
+    <div class="ds-subsection-title">Segmented Buttons</div>
+    <div class="ds-label">Two Segments</div>
+    <div class="ds-demo">
+      <div class="ds-segmented-group" id="seg-group-1">
+        <button class="ds-segmented-btn active" onclick="selectSegment(this)"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>List</button>
+        <button class="ds-segmented-btn" onclick="selectSegment(this)">Grid</button>
+      </div>
+    </div>
+    <div class="ds-label">Three Segments</div>
+    <div class="ds-demo">
+      <div class="ds-segmented-group" id="seg-group-2">
+        <button class="ds-segmented-btn active" onclick="selectSegment(this)"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Day</button>
+        <button class="ds-segmented-btn" onclick="selectSegment(this)">Week</button>
+        <button class="ds-segmented-btn" onclick="selectSegment(this)">Month</button>
+      </div>
+    </div>
+    <div class="ds-label">With Icons</div>
+    <div class="ds-demo">
+      <div class="ds-segmented-group" id="seg-group-3">
+        <button class="ds-segmented-btn active" onclick="selectSegment(this)"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><svg viewBox="0 0 24 24" width="16" height="16"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>Dashboard</button>
+        <button class="ds-segmented-btn" onclick="selectSegment(this)"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 10h2v7H7zm4-3h2v10h-2zm4 6h2v4h-2z"/></svg>Analytics</button>
+        <button class="ds-segmented-btn" onclick="selectSegment(this)"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 00.12-.61l-1.92-3.32a.49.49 0 00-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.48.48 0 00-.48-.41h-3.84a.48.48 0 00-.48.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96a.49.49 0 00-.59.22L2.74 8.87a.48.48 0 00.12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58a.49.49 0 00-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.48-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6A3.6 3.6 0 1112 8.4a3.6 3.6 0 010 7.2z"/></svg>Settings</button>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- 02 — COMMUNICATION -->
@@ -1098,6 +1521,75 @@ body {
       </ul>
     </div>
   </div>
+
+  <div class="ds-subsection">
+    <div class="ds-subsection-title">Bottom Sheets</div>
+    <div class="ds-demo">
+      <div class="ds-bottom-sheet-mock">
+        <div class="ds-bottom-sheet-handle"><span></span></div>
+        <div class="ds-bottom-sheet-header">Share Report</div>
+        <ul class="ds-bottom-sheet-list">
+          <li class="ds-bottom-sheet-item"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>Send via Email</li>
+          <li class="ds-bottom-sheet-item"><svg viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>Copy Link</li>
+          <li class="ds-bottom-sheet-item"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>Download PDF</li>
+          <li class="ds-bottom-sheet-item"><svg viewBox="0 0 24 24"><path d="M19 2H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h4l3 3 3-3h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-6 16h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 11.9 13 12.5 13 14h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg>Get Help</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="ds-subsection">
+    <div class="ds-subsection-title">Carousel</div>
+    <div class="ds-demo">
+      <div class="ds-carousel-wrap" id="demo-carousel">
+        <button class="ds-carousel-arrow ds-carousel-arrow-left" onclick="scrollCarousel('demo-carousel-track',-240)" aria-label="Scroll left"><svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>
+        <div class="ds-carousel-track" id="demo-carousel-track">
+          <div class="ds-carousel-card">
+            <div class="ds-carousel-card-img" style="background:var(--sa-red)"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div>
+            <div class="ds-carousel-card-body"><div class="ds-carousel-card-title">Trust Score API</div><div class="ds-carousel-card-desc">Real-time domain trust scoring with 99.9% uptime.</div></div>
+          </div>
+          <div class="ds-carousel-card">
+            <div class="ds-carousel-card-img" style="background:var(--chart-blue)"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 10h2v7H7zm4-3h2v10h-2zm4 6h2v4h-2z"/></svg></div>
+            <div class="ds-carousel-card-body"><div class="ds-carousel-card-title">Analytics Dashboard</div><div class="ds-carousel-card-desc">Visualise threat trends and domain reports.</div></div>
+          </div>
+          <div class="ds-carousel-card">
+            <div class="ds-carousel-card-img" style="background:var(--chart-teal)"><svg viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg></div>
+            <div class="ds-carousel-card-body"><div class="ds-carousel-card-title">Alert System</div><div class="ds-carousel-card-desc">Instant notifications when threats are detected.</div></div>
+          </div>
+          <div class="ds-carousel-card">
+            <div class="ds-carousel-card-img" style="background:var(--chart-purple)"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg></div>
+            <div class="ds-carousel-card-body"><div class="ds-carousel-card-title">Bulk Reports</div><div class="ds-carousel-card-desc">Batch-check thousands of domains at once.</div></div>
+          </div>
+        </div>
+        <button class="ds-carousel-arrow ds-carousel-arrow-right" onclick="scrollCarousel('demo-carousel-track',240)" aria-label="Scroll right"><svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="ds-subsection">
+    <div class="ds-subsection-title">Side Sheets</div>
+    <div class="ds-demo">
+      <div class="ds-side-sheet-mock">
+        <div class="ds-side-sheet-content">
+          <div style="font-size:16px;font-weight:700;color:var(--sa-dark);margin-bottom:8px">Main Content Area</div>
+          <p>Select an item to see its details in the side sheet panel on the right.</p>
+        </div>
+        <div class="ds-side-sheet-panel">
+          <div class="ds-side-sheet-panel-header">
+            <h4>Details</h4>
+            <button class="ds-side-sheet-panel-close" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
+          </div>
+          <div class="ds-side-sheet-panel-body">
+            <div class="ds-side-sheet-field"><label>Domain</label><span>example.com</span></div>
+            <div class="ds-side-sheet-field"><label>Trust Score</label><span style="color:var(--chart-teal);font-weight:700">92 / 100</span></div>
+            <div class="ds-side-sheet-field"><label>Status</label><span class="ds-status ds-status-success"><span class="ds-status-dot"></span>Safe</span></div>
+            <div class="ds-side-sheet-field"><label>Last Scanned</label><span>2 hours ago</span></div>
+            <div class="ds-side-sheet-field"><label>Owner</label><span>Acme Corp</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- 04 — NAVIGATION -->
@@ -1177,6 +1669,87 @@ body {
       </div>
     </div>
   </div>
+
+  <div class="ds-subsection">
+    <div class="ds-subsection-title">Bottom App Bar</div>
+    <div class="ds-demo">
+      <div class="ds-bottom-appbar-mock" id="demo-bottom-appbar">
+        <button class="ds-bottom-appbar-item active" onclick="selectBottomAppBar(this)"><svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg><span>Home</span></button>
+        <button class="ds-bottom-appbar-item" onclick="selectBottomAppBar(this)"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>Search</span></button>
+        <button class="ds-bottom-appbar-item" onclick="selectBottomAppBar(this)"><svg viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg><span>Alerts</span></button>
+        <button class="ds-bottom-appbar-item" onclick="selectBottomAppBar(this)"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg><span>Profile</span></button>
+        <button class="ds-bottom-appbar-fab" aria-label="Add"><svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="ds-subsection">
+    <div class="ds-subsection-title">Navigation Bar</div>
+    <div class="ds-demo">
+      <div class="ds-navbar-mock" id="demo-navbar">
+        <button class="ds-navbar-item active" onclick="selectNavbar(this)"><svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg><span>Dashboard</span></button>
+        <button class="ds-navbar-item" onclick="selectNavbar(this)"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 10h2v7H7zm4-3h2v10h-2zm4 6h2v4h-2z"/></svg><span>Analytics</span></button>
+        <button class="ds-navbar-item" onclick="selectNavbar(this)"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg><span>Security</span></button>
+        <button class="ds-navbar-item" onclick="selectNavbar(this)"><svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 00.12-.61l-1.92-3.32a.49.49 0 00-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.48.48 0 00-.48-.41h-3.84a.48.48 0 00-.48.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96a.49.49 0 00-.59.22L2.74 8.87a.48.48 0 00.12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58a.49.49 0 00-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.48-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6A3.6 3.6 0 1112 8.4a3.6 3.6 0 010 7.2z"/></svg><span>Settings</span></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="ds-subsection">
+    <div class="ds-subsection-title">Navigation Drawer</div>
+    <div class="ds-demo">
+      <div class="ds-nav-drawer-mock" id="demo-nav-drawer">
+        <div class="ds-nav-drawer-header">
+          <div class="ds-nav-drawer-header-title">ScamAdviser B2B</div>
+          <div class="ds-nav-drawer-header-sub">admin@scamadviser.com</div>
+        </div>
+        <div class="ds-nav-drawer-section">
+          <div class="ds-nav-drawer-section-label">Main</div>
+          <div class="ds-nav-drawer-item active" onclick="selectDrawerItem(this)"><svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>Dashboard</div>
+          <div class="ds-nav-drawer-item" onclick="selectDrawerItem(this)"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 10h2v7H7zm4-3h2v10h-2zm4 6h2v4h-2z"/></svg>Analytics</div>
+          <div class="ds-nav-drawer-item" onclick="selectDrawerItem(this)"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>Security</div>
+        </div>
+        <div class="ds-nav-drawer-section">
+          <div class="ds-nav-drawer-section-label">Reports</div>
+          <div class="ds-nav-drawer-item" onclick="selectDrawerItem(this)"><svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>Domain Reports</div>
+          <div class="ds-nav-drawer-item" onclick="selectDrawerItem(this)"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>Email Alerts</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ds-subsection">
+    <div class="ds-subsection-title">Navigation Rail</div>
+    <div class="ds-demo">
+      <div class="ds-nav-rail-mock" id="demo-nav-rail">
+        <button class="ds-nav-rail-fab" aria-label="Add"><svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg></button>
+        <button class="ds-nav-rail-item active" onclick="selectRailItem(this)"><svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg><span>Home</span></button>
+        <button class="ds-nav-rail-item" onclick="selectRailItem(this)"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>Search</span></button>
+        <button class="ds-nav-rail-item" onclick="selectRailItem(this)"><svg viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg><span>Alerts</span></button>
+        <button class="ds-nav-rail-item" onclick="selectRailItem(this)"><svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 00.12-.61l-1.92-3.32a.49.49 0 00-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.48.48 0 00-.48-.41h-3.84a.48.48 0 00-.48.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96a.49.49 0 00-.59.22L2.74 8.87a.48.48 0 00.12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58a.49.49 0 00-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.48-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6A3.6 3.6 0 1112 8.4a3.6 3.6 0 010 7.2z"/></svg><span>Settings</span></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="ds-subsection">
+    <div class="ds-subsection-title">Search</div>
+    <div class="ds-label">Default</div>
+    <div class="ds-demo">
+      <div class="ds-searchbar" id="demo-searchbar">
+        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <input type="text" placeholder="Search domains, reports, users..." oninput="handleSearchInput(this)">
+        <button class="ds-searchbar-clear" onclick="clearSearch(this)" aria-label="Clear"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
+      </div>
+    </div>
+    <div class="ds-label">With Value</div>
+    <div class="ds-demo">
+      <div class="ds-searchbar has-value">
+        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <input type="text" value="suspicious-domain.xyz" oninput="handleSearchInput(this)">
+        <button class="ds-searchbar-clear" onclick="clearSearch(this)" aria-label="Clear"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- 05 — SELECTION -->
@@ -1235,6 +1808,115 @@ body {
       <div class="ds-demo-row" id="input-chips">
         <span class="ds-chip ds-chip-filled">design@scamadviser.com<span class="ds-chip-close" onclick="this.parentElement.remove()"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></span></span>
         <span class="ds-chip ds-chip-filled">api@scamadviser.com<span class="ds-chip-close" onclick="this.parentElement.remove()"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ds-subsection">
+    <div class="ds-subsection-title">Date Pickers</div>
+    <div class="ds-demo">
+      <div class="ds-datepicker-mock">
+        <div class="ds-datepicker-header">
+          <div class="ds-datepicker-year">2026</div>
+          <div class="ds-datepicker-date">Tue, Jun 24</div>
+        </div>
+        <div class="ds-datepicker-nav">
+          <button class="ds-datepicker-nav-btn" aria-label="Previous month"><svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>
+          <span class="ds-datepicker-month">June 2026</span>
+          <button class="ds-datepicker-nav-btn" aria-label="Next month"><svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></button>
+        </div>
+        <div class="ds-datepicker-grid">
+          <span class="ds-datepicker-day-label">S</span><span class="ds-datepicker-day-label">M</span><span class="ds-datepicker-day-label">T</span><span class="ds-datepicker-day-label">W</span><span class="ds-datepicker-day-label">T</span><span class="ds-datepicker-day-label">F</span><span class="ds-datepicker-day-label">S</span>
+          <button class="ds-datepicker-day other-month" onclick="selectDate(this)">31</button><button class="ds-datepicker-day" onclick="selectDate(this)">1</button><button class="ds-datepicker-day" onclick="selectDate(this)">2</button><button class="ds-datepicker-day" onclick="selectDate(this)">3</button><button class="ds-datepicker-day" onclick="selectDate(this)">4</button><button class="ds-datepicker-day" onclick="selectDate(this)">5</button><button class="ds-datepicker-day" onclick="selectDate(this)">6</button>
+          <button class="ds-datepicker-day" onclick="selectDate(this)">7</button><button class="ds-datepicker-day" onclick="selectDate(this)">8</button><button class="ds-datepicker-day" onclick="selectDate(this)">9</button><button class="ds-datepicker-day" onclick="selectDate(this)">10</button><button class="ds-datepicker-day" onclick="selectDate(this)">11</button><button class="ds-datepicker-day" onclick="selectDate(this)">12</button><button class="ds-datepicker-day" onclick="selectDate(this)">13</button>
+          <button class="ds-datepicker-day" onclick="selectDate(this)">14</button><button class="ds-datepicker-day" onclick="selectDate(this)">15</button><button class="ds-datepicker-day" onclick="selectDate(this)">16</button><button class="ds-datepicker-day" onclick="selectDate(this)">17</button><button class="ds-datepicker-day" onclick="selectDate(this)">18</button><button class="ds-datepicker-day" onclick="selectDate(this)">19</button><button class="ds-datepicker-day" onclick="selectDate(this)">20</button>
+          <button class="ds-datepicker-day" onclick="selectDate(this)">21</button><button class="ds-datepicker-day" onclick="selectDate(this)">22</button><button class="ds-datepicker-day" onclick="selectDate(this)">23</button><button class="ds-datepicker-day today selected" onclick="selectDate(this)">24</button><button class="ds-datepicker-day" onclick="selectDate(this)">25</button><button class="ds-datepicker-day" onclick="selectDate(this)">26</button><button class="ds-datepicker-day" onclick="selectDate(this)">27</button>
+          <button class="ds-datepicker-day" onclick="selectDate(this)">28</button><button class="ds-datepicker-day" onclick="selectDate(this)">29</button><button class="ds-datepicker-day" onclick="selectDate(this)">30</button><button class="ds-datepicker-day other-month" onclick="selectDate(this)">1</button><button class="ds-datepicker-day other-month" onclick="selectDate(this)">2</button><button class="ds-datepicker-day other-month" onclick="selectDate(this)">3</button><button class="ds-datepicker-day other-month" onclick="selectDate(this)">4</button>
+        </div>
+        <div class="ds-datepicker-actions">
+          <button class="ds-btn ds-btn-ghost ds-btn-sm">Cancel</button>
+          <button class="ds-btn ds-btn-primary ds-btn-sm">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ds-subsection">
+    <div class="ds-subsection-title">Menus</div>
+    <div class="ds-demo">
+      <div class="ds-demo-row" style="gap:32px">
+        <div class="ds-menu-wrap">
+          <button class="ds-btn ds-btn-secondary ds-btn-md" onclick="toggleMenu('demo-menu-1')"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>Actions</button>
+          <div class="ds-menu" id="demo-menu-1">
+            <button class="ds-menu-item" onclick="toggleMenu('demo-menu-1')"><svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>Edit</button>
+            <button class="ds-menu-item" onclick="toggleMenu('demo-menu-1')"><svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>Duplicate</button>
+            <button class="ds-menu-item" onclick="toggleMenu('demo-menu-1')"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>Download</button>
+            <div class="ds-menu-divider"></div>
+            <button class="ds-menu-item destructive" onclick="toggleMenu('demo-menu-1')"><svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ds-subsection">
+    <div class="ds-subsection-title">Sliders</div>
+    <div class="ds-label">Continuous Slider</div>
+    <div class="ds-demo">
+      <div class="ds-slider-wrap">
+        <div class="ds-slider-label"><span>Trust Score Threshold</span><span class="ds-slider-value" id="slider-val-1">65</span></div>
+        <input type="range" class="ds-slider" min="0" max="100" value="65" oninput="document.getElementById('slider-val-1').textContent=this.value">
+      </div>
+    </div>
+    <div class="ds-label">Discrete Slider (Steps of 10)</div>
+    <div class="ds-demo">
+      <div class="ds-slider-wrap">
+        <div class="ds-slider-label"><span>API Rate Limit</span><span class="ds-slider-value" id="slider-val-2">50</span></div>
+        <input type="range" class="ds-slider" min="0" max="100" value="50" step="10" oninput="document.getElementById('slider-val-2').textContent=this.value">
+        <div class="ds-slider-discrete-marks">
+          <span>0</span><span>10</span><span>20</span><span>30</span><span>40</span><span>50</span><span>60</span><span>70</span><span>80</span><span>90</span><span>100</span>
+        </div>
+      </div>
+    </div>
+    <div class="ds-label">Range Display</div>
+    <div class="ds-demo">
+      <div class="ds-slider-wrap">
+        <div class="ds-slider-label"><span>Scan Frequency (hours)</span><span class="ds-slider-value" id="slider-val-3">12</span></div>
+        <input type="range" class="ds-slider" min="1" max="72" value="12" oninput="document.getElementById('slider-val-3').textContent=this.value">
+      </div>
+    </div>
+  </div>
+
+  <div class="ds-subsection">
+    <div class="ds-subsection-title">Time Pickers</div>
+    <div class="ds-demo">
+      <div class="ds-timepicker-mock">
+        <div class="ds-timepicker-title">Select Time</div>
+        <div class="ds-timepicker-display">
+          <div class="ds-timepicker-num active" onclick="selectTimeNum(this)">09</div>
+          <div class="ds-timepicker-sep">:</div>
+          <div class="ds-timepicker-num" onclick="selectTimeNum(this)">30</div>
+          <div class="ds-timepicker-period">
+            <button class="ds-timepicker-period-btn active" onclick="selectTimePeriod(this)">AM</button>
+            <button class="ds-timepicker-period-btn" onclick="selectTimePeriod(this)">PM</button>
+          </div>
+        </div>
+        <div class="ds-timepicker-clock">
+          <div class="ds-timepicker-clock-hand" style="transform:rotate(270deg)"></div>
+          <div class="ds-timepicker-clock-center"></div>
+          <span class="ds-timepicker-clock-num" style="top:8px;left:50%;transform:translateX(-50%)">12</span>
+          <span class="ds-timepicker-clock-num" style="top:20px;right:22px">1</span>
+          <span class="ds-timepicker-clock-num" style="top:50%;right:8px;transform:translateY(-50%)">3</span>
+          <span class="ds-timepicker-clock-num" style="bottom:20px;right:22px">5</span>
+          <span class="ds-timepicker-clock-num" style="bottom:8px;left:50%;transform:translateX(-50%)">6</span>
+          <span class="ds-timepicker-clock-num" style="bottom:20px;left:22px">7</span>
+          <span class="ds-timepicker-clock-num active" style="top:50%;left:8px;transform:translateY(-50%)">9</span>
+          <span class="ds-timepicker-clock-num" style="top:20px;left:22px">11</span>
+        </div>
+        <div class="ds-timepicker-actions">
+          <button class="ds-btn ds-btn-ghost ds-btn-sm">Cancel</button>
+          <button class="ds-btn ds-btn-primary ds-btn-sm">OK</button>
+        </div>
       </div>
     </div>
   </div>
@@ -1660,6 +2342,103 @@ function togglePw() {
     f.type = 'password';
     i.innerHTML = '<path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>';
   }
+}
+
+// ---- Segmented Buttons ----
+function selectSegment(btn) {
+  var group = btn.parentElement;
+  var btns = group.querySelectorAll('.ds-segmented-btn');
+  var check = '<svg viewBox="0 0 24 24" width="16" height="16"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
+  btns.forEach(function(b) {
+    b.classList.remove('active');
+    var existingCheck = b.querySelector('svg[viewBox="0 0 24 24"]');
+    if (existingCheck && existingCheck.querySelector('path[d^="M9 16.17"]')) existingCheck.remove();
+  });
+  btn.classList.add('active');
+  btn.insertAdjacentHTML('afterbegin', check);
+}
+
+// ---- Carousel ----
+function scrollCarousel(trackId, amount) {
+  var track = document.getElementById(trackId);
+  if (track) track.scrollBy({ left: amount, behavior: 'smooth' });
+}
+
+// ---- Bottom App Bar ----
+function selectBottomAppBar(btn) {
+  var bar = btn.closest('.ds-bottom-appbar-mock');
+  bar.querySelectorAll('.ds-bottom-appbar-item').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+}
+
+// ---- Navigation Bar ----
+function selectNavbar(btn) {
+  var bar = btn.closest('.ds-navbar-mock');
+  bar.querySelectorAll('.ds-navbar-item').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+}
+
+// ---- Navigation Drawer ----
+function selectDrawerItem(item) {
+  var drawer = item.closest('.ds-nav-drawer-mock');
+  drawer.querySelectorAll('.ds-nav-drawer-item').forEach(function(i) { i.classList.remove('active'); });
+  item.classList.add('active');
+}
+
+// ---- Navigation Rail ----
+function selectRailItem(btn) {
+  var rail = btn.closest('.ds-nav-rail-mock');
+  rail.querySelectorAll('.ds-nav-rail-item').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+}
+
+// ---- Search Bar ----
+function handleSearchInput(input) {
+  var bar = input.closest('.ds-searchbar');
+  if (input.value.length > 0) { bar.classList.add('has-value'); }
+  else { bar.classList.remove('has-value'); }
+}
+function clearSearch(btn) {
+  var bar = btn.closest('.ds-searchbar');
+  var input = bar.querySelector('input');
+  input.value = '';
+  bar.classList.remove('has-value');
+  input.focus();
+}
+
+// ---- Date Picker ----
+function selectDate(btn) {
+  var grid = btn.closest('.ds-datepicker-grid');
+  grid.querySelectorAll('.ds-datepicker-day').forEach(function(d) { d.classList.remove('selected'); });
+  btn.classList.add('selected');
+}
+
+// ---- Menus ----
+function toggleMenu(id) {
+  var menu = document.getElementById(id);
+  menu.classList.toggle('open');
+  if (menu.classList.contains('open')) {
+    setTimeout(function() {
+      document.addEventListener('click', function closeMenu(e) {
+        if (!menu.contains(e.target) && !menu.previousElementSibling.contains(e.target)) {
+          menu.classList.remove('open');
+          document.removeEventListener('click', closeMenu);
+        }
+      });
+    }, 0);
+  }
+}
+
+// ---- Time Picker ----
+function selectTimeNum(el) {
+  var display = el.closest('.ds-timepicker-display');
+  display.querySelectorAll('.ds-timepicker-num').forEach(function(n) { n.classList.remove('active'); });
+  el.classList.add('active');
+}
+function selectTimePeriod(btn) {
+  var period = btn.closest('.ds-timepicker-period');
+  period.querySelectorAll('.ds-timepicker-period-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
 }
 
 // ---- WebGL Aurora Background ----
